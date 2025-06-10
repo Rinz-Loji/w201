@@ -1,1 +1,1 @@
-console.log("Hello NPM World");
+console.log("Hello NPM");
