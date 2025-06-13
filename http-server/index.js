@@ -1,6 +1,6 @@
 let form = document.getElementById("user-form");
 let submit = document.getElementById("submit");
-let name = document.getElementById("name");
+let DOB = document.getElementById("DOB");
 
 /* Function for showing the table on the user page form local storage */
 const retrieveentries = () => {
@@ -29,27 +29,50 @@ let entries = [
 localStorage.setItem("Entries", JSON.stringify(entries));
 retrieveentries();
 
-function validate(nam) {
-  if (nam.value.length > 8) {
-    nam.setCustomValidity("No");
-    nam.reportValidity();
+function age(date) {
+  let age = 0;
+  const today = new Date();
+  let year = today.getFullYear();
+  let month = today.getMonth() + 1;
+  let day = today.getDate();
+  let x = date.split("-");
+  x = x.map((y) => Number(y));
+  if (month > x[1]) {
+    age = year - x[0];
+  } else if (month < x[1]) {
+    age = year - x[0] - 1;
   } else {
-    nam.setCustomValidity("");
+    if (day >= x[2]) {
+      age = year - x[0];
+    } else {
+      age = year - x[0] - 1;
+    }
+  }
+  return age;
+}
+function validate(date) {
+  if (age(date) < 18) {
+    DOB.setCustomValidity("Should be at least 18 years old");
+    DOB.reportValidity();
+  } else if (age(date) > 60) {
+    DOB.setCustomValidity("Should be less than 60 years old");
+    DOB.reportValidity();
+  } else {
+    DOB.setCustomValidity("");
   }
 }
-submit.addEventListener("click", () => validate(name));
+submit.addEventListener("click", () => validate(DOB.value));
 
 form.addEventListener("submit", function (event) {
   /* Prevemting default event and getting all input elements */
   event.preventDefault();
-
+  const name = document.getElementById("name").value;
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
-  const DOB = document.getElementById("DOB").value;
   const terms = document.getElementById("terms").checked;
-
   /* Putting all elements in an array and pushing into the entries array */
-  let arr = [name.value, email, password, DOB, terms];
+  console.log(age(DOB.value));
+  let arr = [name, email, password, DOB.value, terms];
   entries.push(arr);
   localStorage.setItem("Entries", JSON.stringify(entries));
   retrieveentries();
