@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html>
-    <head>   
-        <link href="style.css" rel="stylesheet"> 
+    <head>    
         <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
         <title>Registration Page</title>
         </style>
     </head>
     <body>
         <h1 class="text-3xl text-center">Registration page</h1>
-        <div class="items-center border-2 bg-amber-200">
+        <div class="flex items-center border-2">
         <form id="user-form">
             <label class="text-2xl" for="name">Name</label class="text-2xl">
             <input class="border-2 rounded-b-2xl" required type="text" id="name" name="name" placeholder="Enter full name"></br>
@@ -20,7 +19,7 @@
             <input class="border-2 rounded-b-2xl" required type="date" id="DOB" name="DOB" placeholder="Enter date of birth" ></br>
             <input class="border-2 rounded-b-2xl" required type="checkbox" id="terms" name="terms">
             <label class="text-2xl" for="terms">Accept Terms of Conditions</label></br>
-            <button class="border-1 rounded-4x2 bg-clip-padding" type="submit" id="submit">Submit</button> 
+            <button class="border-1" type="submit" id="submit">Submit</button> 
         </form>
         </div>
         <h1>Entered Users</h1>
@@ -35,7 +34,7 @@
                 </tr>
             </table>
         </div>
-        <script src="index.js">
+        <script src="reg.js">
         </script>
     </body>
 </html>
