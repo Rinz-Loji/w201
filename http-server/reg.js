@@ -13,9 +13,9 @@ const retrieveentries = () => {
     /* Each elemnt inside an array has to be between <th> and </th> */
     th = row.map((col) => {
       if (index === 0) {
-        return "<th>" + col + "</th>";
+        return '<th class="border border-blue-400 px-6 py-1">' + col + "</th>";
       } else {
-        return "<td>" + col + "</td>";
+        return '<td class="border border-blue-400 px-6 py-1">' + col + "</td>";
       }
     });
     return "<tr>" + th.join("\n") + "</tr>";

@@ -6,35 +6,29 @@
         </style>
     </head>
     <body>
-        <h1 class="text-3xl text-center">Registration page</h1>
-        <div class="flex items-center border-2">
+    <div class="min-h-screen flex items-center justify-center bg-blue-100 ">
+        <div class="bg-white border border-blue-500 p-6 rounded-lg shadow-md w-full  max-w-min ">
+        <h2 class="text-3xl font-bold mb-4 text-center">Register</h2>
         <form id="user-form">
-            <label class="text-2xl" for="name">Name</label class="text-2xl">
-            <input class="border-2 rounded-b-2xl" required type="text" id="name" name="name" placeholder="Enter full name"></br>
-            <label class="text-2xl" for="email">Email</label class="text-2xl">
-            <input class="border-2 rounded-b-2xl" required type="email" id="email" name="email" placeholder="Enter email"></br>
-            <label class="text-2xl" for="password">Password</label class="text-2xl">
-            <input class="border-2 rounded-b-2xl" required type="password" id="password" name="password" placeholder="Enter password"></br>
-            <label class="text-2xl" for="DOB">Date of Birth</label class="text-2xl">
-            <input class="border-2 rounded-b-2xl" required type="date" id="DOB" name="DOB" placeholder="Enter date of birth" ></br>
-            <input class="border-2 rounded-b-2xl" required type="checkbox" id="terms" name="terms">
-            <label class="text-2xl" for="terms">Accept Terms of Conditions</label></br>
-            <button class="border-1" type="submit" id="submit">Submit</button> 
+            <label class="" for="name">Name</label class="">
+            <input class="border-2 rounded-lg mb-4" required type="text" id="name" name="name" placeholder="Enter full name"></br>
+            <label class="" for="email">Email</label class="">
+            <input class="border-2 rounded-lg mb-4" required type="email" id="email" name="email" placeholder="Enter email"></br>
+            <label class="" for="password">Password</label class="">
+            <input class="border-2 rounded-lg mb-4" required type="password" id="password" name="password" placeholder="Enter password"></br>
+            <label class="" for="DOB">Date of Birth</label class="">
+            <input class="border-2 rounded-lg mb-4 " required type="date" id="DOB" name="DOB" placeholder="Enter date of birth" ></br>
+            <input class="border-2 rounded-lg mb-4" required type="checkbox" id="terms" name="terms">
+            <label class="" for="terms">Accept Terms of Conditions</label></br>
+            <button class="border-1 rounded-lg p-1 mb-10" type="submit" id="submit">Submit</button> 
         </form>
-        </div>
-        <h1>Entered Users</h1>
-        <div>
-            <table id="table" border="1">
-                <tr>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Password</th>
-                    <th>Date of Birth</th>
-                    <th>Terms</th>
-                </tr>
+        
+        <h1 class="text-3xl font-black mb-4 text-center">Entered Users</h1>
+            <table id="table" class="table-auto w-full border border-gray-300 border-collapse">
             </table>
         </div>
         <script src="reg.js">
         </script>
+        </div>
     </body>
 </html>
