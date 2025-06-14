@@ -50,12 +50,38 @@ function age(date) {
   }
   return age;
 }
+
+function Minage(date) {
+  const today = new Date();
+  const year = today.getFullYear();
+  const month = String(today.getMonth() + 1).padStart(2, "0");
+  const day = String(today.getDate()).padStart(2, "0");
+  const min = [year, month, day];
+  let x = date.split("-");
+  min[0] = year - 18;
+  return min.join("/");
+}
+
+function Maxage(date) {
+  const today = new Date();
+  const year = today.getFullYear();
+  const month = String(today.getMonth() + 1).padStart(2, "0");
+  const day = String(today.getDate()).padStart(2, "0");
+  const max = [year, month, day];
+  let x = date.split("-");
+  max[0] = year - 60;
+  return max.join("/");
+}
 function validate(date) {
   if (age(date) < 18) {
-    DOB.setCustomValidity("Should be at least 18 years old");
+    DOB.setCustomValidity(
+      `Value must be ${Minage(date)} or before of the format YYYY/MM/DD`
+    );
     DOB.reportValidity();
   } else if (age(date) > 60) {
-    DOB.setCustomValidity("Should be less than 60 years old");
+    DOB.setCustomValidity(
+      `Value must be ${Maxage(date)} or after of the format YYYY/MM/DD`
+    );
     DOB.reportValidity();
   } else {
     DOB.setCustomValidity("");
