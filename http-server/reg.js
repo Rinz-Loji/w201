@@ -1,6 +1,6 @@
 let form = document.getElementById("user-form");
 let submit = document.getElementById("submit");
-let DOB = document.getElementById("DOB");
+let DOB = document.getElementById("dob");
 
 /* Function for showing the table on the user page form local storage */
 const retrieveentries = () => {
@@ -12,21 +12,22 @@ const retrieveentries = () => {
   let tr = Entries.map((row, index) => {
     /* Each elemnt inside an array has to be between <th> and </th> */
     th = row.map((col) => {
-      if (index === 0) {
-        return '<th class="border border-blue-400 px-6 py-1">' + col + "</th>";
-      } else {
-        return '<td class="border border-blue-400 px-6 py-1">' + col + "</td>";
-      }
+      return '<td class="border border-blue-400 px-6 py-1">' + col + "</td>";
     });
     return "<tr>" + th.join("\n") + "</tr>";
   });
   document.getElementById("table").innerHTML = tr.join("\n");
 };
 
-let entries = [
-  ["Name", "Email", "Password", "Date Of Birth", "Accepted or Not"],
-];
-localStorage.setItem("Entries", JSON.stringify(entries));
+if (localStorage.getItem("Entries") === null) {
+  /* Adding an empty array to local storage */
+  entries = [];
+  localStorage.setItem("Entries", JSON.stringify([]));
+} else {
+  entries = JSON.parse(localStorage.getItem("Entries"));
+  retrieveentries();
+}
+
 retrieveentries();
 
 function age(date) {
@@ -69,7 +70,7 @@ function Maxage(date) {
   const day = String(today.getDate()).padStart(2, "0");
   const max = [year, month, day];
   let x = date.split("-");
-  max[0] = year - 60;
+  max[0] = year - 55;
   return max.join("/");
 }
 function validate(date) {
@@ -78,7 +79,7 @@ function validate(date) {
       `Value must be ${Minage(date)} or before of the format YYYY/MM/DD`
     );
     DOB.reportValidity();
-  } else if (age(date) > 60) {
+  } else if (age(date) > 55) {
     DOB.setCustomValidity(
       `Value must be ${Maxage(date)} or after of the format YYYY/MM/DD`
     );
@@ -95,7 +96,7 @@ form.addEventListener("submit", function (event) {
   const name = document.getElementById("name").value;
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
-  const terms = document.getElementById("terms").checked;
+  const terms = document.getElementById("acceptterms").checked;
   /* Putting all elements in an array and pushing into the entries array */
   console.log(age(DOB.value));
   let arr = [name, email, password, DOB.value, terms];
