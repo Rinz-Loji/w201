@@ -1,0 +1,11 @@
+{
+  "name": "render",
+  "version": "1.0.0",
+  "description": "For testing promises and async",
+  "main": "render.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Rinz Loji <rinzloji30@gmail.com>",
+  "license": "ISC"
+}
